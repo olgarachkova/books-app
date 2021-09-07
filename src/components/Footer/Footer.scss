@@ -1,0 +1,49 @@
+$grey1: #0F1011;
+$grey1-rgba: rgba(15,16,17, 0.9);
+$grey2: #191A1E;
+$grey3: #9a9a9a;
+$white1: #F4F4F5;
+
+$desktop-width: 1280px;
+$footer-minheight: 30px;
+
+.container {
+    max-width: $desktop-width;
+    margin: 0 auto;
+}
+
+.footer {
+    min-height: $footer-minheight;
+    background-color: $grey1;
+    color: $white1;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    padding: 10px 0;
+}
+
+.footer-menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.footer-menu-item {
+    list-style: none;
+    margin-left: 20px;
+    
+}
+
+.footer-menu-item-link {
+    color: $grey3;
+}
+
+.footer-menu-item-link:hover, .footer-menu-item-link:active {
+    color: $white1;
+}
+
+@media screen and (max-width: 500px) {
+    .footer-menu {
+        margin-right: 15px;
+    }
+}

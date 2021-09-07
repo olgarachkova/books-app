@@ -1,0 +1,28 @@
+.book-title {
+    display: block;
+    font-size: 26px;
+}
+
+.book-minititle {
+    display: block;
+    font-size: 20px;
+}
+
+.about-book {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: #F4F4F5;
+    padding: 20px 0;
+}
+
+.about-book-img{
+    border-radius: 7px 7px 0 0;
+    max-width: 128px;
+}
+
+.about-book-bigdescrition {
+    padding: 10px 15px;
+    background-color: rgba(15,16,17, 0.9);
+    border-radius: 0 0 7px 7px;
+}
