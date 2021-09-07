@@ -11,7 +11,7 @@ export function BigBookCard(props) {
                 <span className="book-title">{props.volumeInfo.title}</span>
                 <span className="book-minititle">Авторы: {props.volumeInfo.authors.join(', ')}</span>
                 <p className="about-book-description">Категории: {props.volumeInfo.categories.join(', ')}</p>
-                <p className="about-book-description">Категории: {props.volumeInfo.description}</p>
+                <p className="about-book-description">Описание: {props.volumeInfo.description}</p>
             </div>
         </article>
     )

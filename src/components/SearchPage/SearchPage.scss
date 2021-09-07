@@ -1,0 +1,33 @@
+$grey2: #191A1E;
+$white1: #F4F4F5;
+
+$width: 1920px;
+
+.container {
+    max-width: $width;
+    margin: 0 auto;
+}
+
+.content {
+    padding-top: 15px;
+    min-height: 100vh;
+    background-color: $grey2;
+    color: $white1;
+    font-family: sans-serif;
+    font-weight: 300;
+}
+
+.searchpage {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-bottom: 25px;
+}
+
+@media screen and (max-width: 1280px) {
+    .searchpage {
+        justify-content: space-around;
+        padding: 0 5px;
+    }
+}
