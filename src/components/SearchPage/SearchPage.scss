@@ -1,7 +1,7 @@
 $grey2: #191A1E;
 $white1: #F4F4F5;
 
-$width: 1920px;
+$width: 1280px;
 
 .container {
     max-width: $width;
@@ -27,7 +27,6 @@ $width: 1920px;
 
 @media screen and (max-width: 1280px) {
     .searchpage {
-        justify-content: space-around;
         padding: 0 5px;
     }
 }
