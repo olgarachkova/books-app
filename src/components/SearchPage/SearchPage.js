@@ -10,7 +10,7 @@ export function SearchPage({ results }) {
         <main className='content'>
             <div className='container'>
                 <div className='searchpage'>
-                    {results.map((book, idx) =>
+                    {results.map((book) =>
                         <a to={'/book/' + book.id} key={book.id}>
                             <BookCard {...book} />
                         </a>

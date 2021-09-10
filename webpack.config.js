@@ -16,6 +16,7 @@ module.exports = {
             containers: path.resolve(__dirname, 'src', 'containers'),
             reducers: path.resolve(__dirname, 'src', 'reducers'),
             actions: path.resolve(__dirname, 'src', 'actions'),
+            api: path.resolve(__dirname, 'src', 'api'),
         }
     },
     devtool: 'eval-source-map',
