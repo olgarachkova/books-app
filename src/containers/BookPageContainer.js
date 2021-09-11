@@ -6,7 +6,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { BookPage } from 'components/BookPage'
 import { Header } from 'components/header'
 import { Footer } from 'components/footer'
-import { GET_BOOK_INFO } from "actions/booksActions"
+import { ContentBox } from 'components/ContentBox'
+import { Loader } from 'components/Loader'
+import { GET_BOOK_INFO, LOADING } from "actions/booksActions"
 
 import { gbooks_volumeByID } from "api/gbooks";
 
@@ -20,6 +22,9 @@ export function BookPageContainer({ history }) {
      */
     useEffect(() => {
         async function getBookInfo() {
+            dispatch({
+                type: LOADING
+            });
             try {
                 const response = await axios.get(gbooks_volumeByID + bookID);
                 dispatch({
@@ -33,18 +38,15 @@ export function BookPageContainer({ history }) {
 
         getBookInfo();
     }, []);
+
+    const loading = useSelector(state => state.books.loading);
     const bookInfo = useSelector(state => state.books.currentBook);
 
     return (
         <Fragment>
             <Header history={history} />
-            <BookPage bookInfo={bookInfo} />
+            {loading ? <ContentBox><Loader /></ContentBox> : <BookPage bookInfo={bookInfo} />}
             <Footer />
         </Fragment>
     )
 }
-
-/*<BookPage bookInfo={bookInfo} />*/
-/*{bookInfo.map((book) => {
-                <BookPage bookInfo={book} />
-            })}*/

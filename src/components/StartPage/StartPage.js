@@ -1,21 +1,16 @@
-import './StartPage.scss';
-
 import React from 'react';
 
 import { Header } from 'components/header'
 import { Footer } from 'components/footer'
-import { Select } from 'components/Select'
+import { ContentBox } from 'components/ContentBox'
 
-export function StartPage() {
+export function StartPage({ history }) {
     return (
         <>
-            <Header />
-            <main className='content'>
-                <div className='container'>
-                    <p>Поиск книг</p>
-                    <Select values={['fsdfsdf', 'sfdsdfds', 'dadsadasdsa']} defaultValue={'dadsadasdsa'} />
-                </div>
-            </main>
+            <Header history={history} />
+            <ContentBox>
+                <p>Поиск книг</p>
+            </ContentBox>
             <Footer />
         </>
     )

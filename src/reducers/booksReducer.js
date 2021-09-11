@@ -1,9 +1,10 @@
-import { GET_BOOK_INFO, GET_SEARCH_RESULTS } from "actions/booksActions"
+import { GET_BOOK_INFO, GET_SEARCH_RESULTS, LOADING } from "actions/booksActions"
 
 const initialState = {
     loading: false,
     currentBook: {},
-    searchresults: []
+    searchresults: [],
+    totalItems: 0,
 };
 
 export const booksReducer = (state = initialState, action) => {
@@ -11,16 +12,25 @@ export const booksReducer = (state = initialState, action) => {
         case GET_BOOK_INFO: {
             return {
                 ...state,
+                loading: false,
                 currentBook: action.payload
             };
         }
         case GET_SEARCH_RESULTS: {
             return {
                 ...state,
-                searchresults: action.payload.items
+                loading: false,
+                searchresults: action.payload.items,
+                totalItems: action.payload.totalItems,
+            };
+        }
+        case LOADING: {
+            return {
+                ...state,
+                loading: true
             };
         }
         default:
-            return (state);
+            return state;
     }
 }

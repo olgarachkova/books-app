@@ -1,11 +1,10 @@
 import './header.scss'
 
 import React, { useState } from "react";
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export function Header(props) {
+export function Header({ history }) {
     const [searchQuery, setSearchQuery] = useState("");
-    const { history } = props;
 
     const handleInputChange = (event) => {
         setSearchQuery(event.target.value);
@@ -20,7 +19,7 @@ export function Header(props) {
             <div className="container">
                 <div className="header-container">
                     <nav className="header-menu">
-                        <a to="/" className="header-menu-item">Главная</a>|
+                        <Link to="/" className="header-menu-item">Главная</Link>|
                     </nav>
                     <form onSubmit={handleSubmit} >
                         <input type="text" name="search" placeholder="введите название книги" className="search"
