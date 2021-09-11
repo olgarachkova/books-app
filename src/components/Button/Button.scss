@@ -1,0 +1,20 @@
+$grey1: #0F1011;
+$grey3: #9a9a9a;
+$white1: #F4F4F5;
+
+.button {
+    background-color: $grey1;
+    color: $white1;
+    border-style: none;
+    border: 1px solid $grey3;
+    border-radius: 7px;
+    font-size: 20px;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 40px;
+    
+    &:hover, :active {
+        border: 1px solid $white1;
+    }
+}

@@ -2,8 +2,9 @@ import { GET_BOOK_INFO, GET_SEARCH_RESULTS, LOADING } from "actions/booksActions
 
 const initialState = {
     loading: false,
+    error: false,
     currentBook: {},
-    searchresults: [],
+    searchResults: [],
     totalItems: 0,
 };
 
@@ -20,7 +21,7 @@ export const booksReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                searchresults: action.payload.items,
+                searchResults: action.payload.items,
                 totalItems: action.payload.totalItems,
             };
         }

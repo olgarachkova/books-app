@@ -4,11 +4,11 @@ $grey2: #191A1E;
 $grey3: #9a9a9a;
 $white1: #F4F4F5;
 
-$desktop-width: 1280px;
+$width: 1280px;
 $footer-minheight: 30px;
 
 .container {
-    max-width: $desktop-width;
+    max-width: $width;
     margin: 0 auto;
 }
 
@@ -31,15 +31,14 @@ $footer-minheight: 30px;
 .footer-menu-item {
     list-style: none;
     margin-left: 20px;
-    
 }
 
 .footer-menu-item-link {
     color: $grey3;
-}
 
-.footer-menu-item-link:hover, .footer-menu-item-link:active {
-    color: $white1;
+    &:hover, :active {
+        color: $white1;
+    }
 }
 
 @media screen and (max-width: 500px) {

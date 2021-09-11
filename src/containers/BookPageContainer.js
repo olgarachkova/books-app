@@ -3,17 +3,14 @@ import axios from 'axios';
 import { useParams } from "react-router";
 import { useSelector, useDispatch } from 'react-redux';
 
-import { BigBookCard } from "components/BigBookCard";
-import { Header } from 'components/header'
-import { Footer } from 'components/footer'
-import { ContentBox } from 'components/ContentBox'
+import { BookCard } from "components/BookCard";
 import { Loader } from 'components/Loader'
 import { GET_BOOK_INFO, LOADING } from "actions/booksActions"
 
 import { gbooks_volumeByID } from "api/gbooks";
 
-export function BookPageContainer({ history }) {
-    const { bookID } = useParams(); // /book/:bookid
+export function BookPageContainer() {
+    const { bookID } = useParams();
 
     const dispatch = useDispatch();
 
@@ -41,15 +38,18 @@ export function BookPageContainer({ history }) {
 
     const loading = useSelector(state => state.books.loading);
     const bookInfo = useSelector(state => state.books.currentBook);
-    console.log(bookInfo);
-    //console.log(gbooks_volumeByID + bookID);
 
     return (
         <>
-            <Header history={history} />
-            {loading ? <ContentBox><Loader /></ContentBox> : <ContentBox></ContentBox>}
-            <Footer />
+            {loading && <Loader />}
+            {!loading && <BookCard
+                imagelink={bookInfo.volumeInfo?.imageLinks?.thumbnail}
+                title={bookInfo.volumeInfo?.title}
+                authors={bookInfo.volumeInfo?.authors}
+                categories={bookInfo.volumeInfo?.categories}
+                description={bookInfo.volumeInfo?.description}
+                isExtended={true}
+            />}
         </>
     )
 }
-/*<BookPage bookInfo={bookInfo} />*/

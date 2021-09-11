@@ -1,17 +1,7 @@
 import React from 'react';
 
-import { Header } from 'components/header'
-import { Footer } from 'components/footer'
-import { ContentBox } from 'components/ContentBox'
-
-export function StartPage({ history }) {
+export function StartPage() {
     return (
-        <>
-            <Header history={history} />
-            <ContentBox>
-                <p>Поиск книг</p>
-            </ContentBox>
-            <Footer />
-        </>
+        <p>Поиск книг</p>
     )
 }

@@ -1,20 +1,19 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from "react-router-dom";
 
-import { SearchPage } from 'components/searchPage';
-import { Header } from 'components/header'
-import { Footer } from 'components/footer'
-import { ContentBox } from 'components/ContentBox'
+import { SearchPage } from 'components/SearchPage';
 import { Loader } from 'components/Loader'
+import { Error } from 'components/Error'
 import { GET_SEARCH_RESULTS, LOADING } from "actions/booksActions"
 
-import { gkey } from '../../../gkey';
+import { gkey } from 'api/gkey';
 import { gbooks_searchRequest } from 'api/gbooks'
 
 
-export function SearchPageContainer({ history }) {
-    const searchQuery = history.location.search.slice(8);
+export function SearchPageContainer() {
+    const searchQuery = (new URLSearchParams(useLocation().search)).get('search');
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -36,15 +35,15 @@ export function SearchPageContainer({ history }) {
     }, [searchQuery]);
 
     const loading = useSelector(state => state.books.loading);
-    const results = useSelector(state => state.books.searchresults);
+    const error = useSelector(state => state.books.error);
+    const results = useSelector(state => state.books.searchResults);
     const totalItems = useSelector(state => state.books.totalItems);
-    console.log(results);
 
     return (
         <>
-            <Header history={history} />
-            {loading ? <ContentBox><Loader /></ContentBox> : <SearchPage results={results} totalItems={totalItems} />}
-            <Footer />
+            {error && <Error />}
+            {loading && !error && <Loader />}
+            {!loading && !error && <SearchPage results={results} totalItems={totalItems} />}
         </>
     )
 }

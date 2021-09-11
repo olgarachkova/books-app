@@ -1,6 +1,7 @@
 import { StartPage } from 'components/StartPage'
 import { BookPageContainer } from 'containers/BookPageContainer'
 import { SearchPageContainer } from 'containers/searchPageContainer'
+import { NoFoundPage } from 'components/NoFoundPage'
 
 export const myroutes = [
     {
@@ -20,6 +21,6 @@ export const myroutes = [
     },
     {
         path: '/',
-        component: StartPage
+        component: NoFoundPage
     }
 ]

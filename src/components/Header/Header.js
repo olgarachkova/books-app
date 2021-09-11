@@ -1,9 +1,12 @@
 import './header.scss'
 
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
-export function Header({ history }) {
+import { Button } from 'components/Button';
+
+export function Header() {
+    let history = useHistory();
     const [searchQuery, setSearchQuery] = useState("");
 
     const handleInputChange = (event) => {
@@ -24,7 +27,7 @@ export function Header({ history }) {
                     <form onSubmit={handleSubmit} >
                         <input type="text" name="search" placeholder="введите название книги" className="search"
                             onChange={handleInputChange} />
-                        <button name="submit" className="search-button">Поиск</button>
+                        <Button type="submit">Поиск</Button>
                     </form>
                 </div>
             </div>
