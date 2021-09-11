@@ -1,9 +1,9 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useEffect } from "react";
 import axios from 'axios';
 import { useParams } from "react-router";
 import { useSelector, useDispatch } from 'react-redux';
 
-import { BookPage } from 'components/BookPage'
+import { BigBookCard } from "components/BigBookCard";
 import { Header } from 'components/header'
 import { Footer } from 'components/footer'
 import { ContentBox } from 'components/ContentBox'
@@ -41,12 +41,15 @@ export function BookPageContainer({ history }) {
 
     const loading = useSelector(state => state.books.loading);
     const bookInfo = useSelector(state => state.books.currentBook);
+    console.log(bookInfo);
+    //console.log(gbooks_volumeByID + bookID);
 
     return (
-        <Fragment>
+        <>
             <Header history={history} />
-            {loading ? <ContentBox><Loader /></ContentBox> : <BookPage bookInfo={bookInfo} />}
+            {loading ? <ContentBox><Loader /></ContentBox> : <ContentBox></ContentBox>}
             <Footer />
-        </Fragment>
+        </>
     )
 }
+/*<BookPage bookInfo={bookInfo} />*/

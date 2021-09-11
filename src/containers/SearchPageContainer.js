@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -15,7 +15,6 @@ import { gbooks_searchRequest } from 'api/gbooks'
 
 export function SearchPageContainer({ history }) {
     const searchQuery = history.location.search.slice(8);
-    //const searchQuery = 'harry';
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -39,12 +38,13 @@ export function SearchPageContainer({ history }) {
     const loading = useSelector(state => state.books.loading);
     const results = useSelector(state => state.books.searchresults);
     const totalItems = useSelector(state => state.books.totalItems);
+    console.log(results);
 
     return (
-        <Fragment>
+        <>
             <Header history={history} />
             {loading ? <ContentBox><Loader /></ContentBox> : <SearchPage results={results} totalItems={totalItems} />}
             <Footer />
-        </Fragment>
+        </>
     )
 }
