@@ -1,18 +1,12 @@
 import './Select.scss'
 
-import React, { useState } from 'react';
+import React from 'react';
 
-export function Select({ values, defaultValue, currentValue, ...props }) {
-    const [currentValue, setCurrentValue] = useState(defaultValue);
-
-    const handleChange = (event) => {
-        setCurrentValue(event.target.value);
-    }
-
+export function Select({ values, currentValue, ...props }) {
     return (
-        <select value={currentValue} onChange={handleChange} className='select' {...props}>
-            {values.map((value, idx) =>
-                <option value={value} key={idx}>{value}</option>
+        <select value={currentValue} className='select' {...props}>
+            {values.map((value) =>
+                <option value={value} key={`option-${value}`}>{value}</option>
             )}
         </select>
     )

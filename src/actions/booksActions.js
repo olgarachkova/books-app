@@ -8,7 +8,7 @@ export const getBooksByKeyword = (searchQuery, subject = '', startIndex = 0, max
         try {
             dispatch(setLoading(true));
             const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchQuery}${subject}&startIndex=${startIndex}&maxResults=${maxResults}&orderBy=${orderBy}&key=${gkey}`);
-            //'+subject:'
+            console.log(`https://www.googleapis.com/books/v1/volumes?q=${searchQuery}${subject}&startIndex=${startIndex}&maxResults=${maxResults}&orderBy=${orderBy}&key=${gkey}`);
             dispatch(setSearchResults(response.data));
         } catch (error) {
             dispatch(setFetchError(true));

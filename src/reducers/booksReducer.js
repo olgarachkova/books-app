@@ -27,7 +27,7 @@ export const booksReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                searchResults: items,
+                searchResults: state.searchResults.concat(items),
                 totalItems: action.payload.totalItems,
             };
         }
