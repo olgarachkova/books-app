@@ -1,43 +1,27 @@
 import React, { useEffect } from "react";
-import axios from 'axios';
 import { useParams } from "react-router";
 import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from "react-router-dom";
 
 import { BookCard } from "components/BookCard";
 import { Loader } from 'components/Loader'
-import { GET_BOOK_INFO, LOADING } from "actions/booksActions"
-
-import { gbooks_volumeByID } from "api/gbooks";
+import { getBookInfo } from "actions/booksActions"
 
 export function BookPageContainer() {
     const { bookID } = useParams();
-
     const dispatch = useDispatch();
-
-    /**
-     * запрос к апи google books, получение информации о книге по Volume ID
-     */
-    useEffect(() => {
-        async function getBookInfo() {
-            dispatch({
-                type: LOADING
-            });
-            try {
-                const response = await axios.get(gbooks_volumeByID + bookID);
-                dispatch({
-                    type: GET_BOOK_INFO,
-                    payload: response.data
-                });
-            } catch (error) {
-                console.error(error);
-            }
-        }
-
-        getBookInfo();
-    }, []);
 
     const loading = useSelector(state => state.books.loading);
     const bookInfo = useSelector(state => state.books.currentBook);
+    const error = useSelector(state => state.books.error);
+
+    useEffect(() => {
+        dispatch(getBookInfo(bookID));
+    }, [bookID]);
+
+    if (error) {
+        return <Redirect to='/error' />
+    }
 
     return (
         <>

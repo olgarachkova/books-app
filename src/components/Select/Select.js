@@ -2,7 +2,7 @@ import './Select.scss'
 
 import React, { useState } from 'react';
 
-export function Select({ values, defaultValue, ...props }) {
+export function Select({ values, defaultValue, currentValue, ...props }) {
     const [currentValue, setCurrentValue] = useState(defaultValue);
 
     const handleChange = (event) => {
