@@ -9,8 +9,8 @@ export function SearchPage({ results, totalItems }) {
     return (
         <div className='searchpage'>
             <p>Найдено {totalItems} книг</p>
-            {results.map((book) =>
-                <Link to={'/book/' + book.id} key={book.id}>
+            {results.map((book, idx) =>
+                <Link to={'/book/' + book.id} key={book.id + idx}>
                     <BookCard
                         imagelink={book.volumeInfo?.imageLinks?.thumbnail}
                         title={book.volumeInfo?.title}

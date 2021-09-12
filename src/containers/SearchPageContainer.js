@@ -5,7 +5,7 @@ import { useLocation, Redirect } from "react-router-dom";
 import { SearchPage } from 'components/SearchPage';
 import { Loader } from 'components/Loader'
 import { Button } from 'components/Button';
-import { getBooksByKeyword } from "actions/booksActions"
+import { getBooksByKeyword, clear } from "actions/booksActions"
 
 export function SearchPageContainer() {
     const searchQuery = (new URLSearchParams(useLocation().search)).get('search');
@@ -23,12 +23,16 @@ export function SearchPageContainer() {
     const totalItems = useSelector(state => state.books.totalItems);
 
     useEffect(() => {
+        dispatch(clear());
+    }, [searchQuery, orderBy, subject]);
+
+    useEffect(() => {
         let category = '';
         if (subject !== 'all') {
             category = `+subject:${subject}`;
         }
         dispatch(getBooksByKeyword(searchQuery, category, startIndex, maxResults, orderBy));
-    }, [startIndex, orderBy, subject]);
+    }, [startIndex, searchQuery, orderBy, subject]);
 
     useEffect(() => {
         if (startIndex + maxResults > totalItems) {

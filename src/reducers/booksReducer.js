@@ -1,5 +1,6 @@
 export const SET_BOOK_INFO = 'SET_BOOK_INFO';
 export const SET_SEARCH_RESULTS = 'SET_SEARCH_RESULTS';
+export const CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS';
 export const SET_LOADING = 'SET_LOADING';
 export const SET_FETCH_ERROR = 'SET_FETCH_ERROR';
 
@@ -23,12 +24,17 @@ export const booksReducer = (state = initialState, action) => {
         case SET_SEARCH_RESULTS: {
             let items = [];
             if (action.payload.items) { items = action.payload.items };
-
             return {
                 ...state,
                 loading: false,
                 searchResults: state.searchResults.concat(items),
                 totalItems: action.payload.totalItems,
+            };
+        }
+        case CLEAR_SEARCH_RESULTS: {
+            return {
+                ...state,
+                searchResults: [],
             };
         }
         case SET_LOADING: {
@@ -52,3 +58,4 @@ export const setSearchResults = (results) => ({ type: SET_SEARCH_RESULTS, payloa
 export const setBookInfo = (book) => ({ type: SET_BOOK_INFO, payload: book });
 export const setLoading = (bool) => ({ type: SET_LOADING, payload: bool });
 export const setFetchError = (bool) => ({ type: SET_FETCH_ERROR, payload: bool });
+export const clearSearchResults = () => ({ type: CLEAR_SEARCH_RESULTS });
