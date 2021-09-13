@@ -8,7 +8,7 @@ import { BookCard } from "components/BookCard";
 export function SearchPage({ results, totalItems }) {
     return (
         <div className='searchpage'>
-            <p>Найдено {totalItems} книг</p>
+            <p>Found {totalItems} results</p>
             {results.map((book, idx) =>
                 <Link to={'/book/' + book.id} key={book.id + idx}>
                     <BookCard

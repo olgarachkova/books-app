@@ -27,6 +27,7 @@ export function Header() {
     const handleSubmit = (event) => {
         event.preventDefault();
         history.push(`/search?search=${searchQuery}&orderBy=${orderBy}&subject=${subject}`);
+        document.querySelector('.search').value = '';
     }
 
     return (
@@ -34,16 +35,18 @@ export function Header() {
             <div className="container">
                 <div className="header-container">
                     <nav className="header-menu">
-                        <Link to="/" className="header-menu-item">Главная</Link>|
+                        <Link to="/" className="header-menu-item">Search for books</Link>|
                     </nav>
                     <form onSubmit={handleSubmit} >
-                        <input type="text" name="search" placeholder="введите название книги" className="search"
+                        <input type="text" name="search" placeholder="search..." className="search"
                             onChange={handleInputChange} />
-                        <Button type="submit">Поиск</Button>
+                        <Button type="submit">Search</Button>
                     </form>
                 </div>
-                <div>
+                <div className='header-selects-container'>
+                    <p className='header-text'>Sorting by</p>
                     <Select values={['relevance', 'newest']} currentValue={orderBy} onChange={handleOrderBySelectChange} />
+                    <p className='header-text'>Categories</p>
                     <Select values={['all', 'art', 'biography', 'computers', 'history', 'medical', 'poetry']} currentValue={subject} onChange={handleSubjectSelectChange} />
                 </div>
             </div>

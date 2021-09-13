@@ -8,7 +8,7 @@ export function Footer() {
         <footer className="footer">
             <div className="container">
                 <menu className="footer-menu">
-                    <li className="footer-menu-item"><Link to='/' className="footer-menu-item-link">О нас</Link></li>
+                    <li className="footer-menu-item"><Link to='/' className="footer-menu-item-link">main page</Link></li>
                 </menu>
             </div>
         </footer>

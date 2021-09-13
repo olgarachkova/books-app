@@ -16,9 +16,9 @@ export function BookCard({ imagelink, title, authors, categories, description, i
             {imagelink && <img src={imagelink} alt={title} className="about-book-img" />}
             <div className="about-book-big-description">
                 <span className="book-title">{title}</span>
-                <span className="book-minititle">Авторы: {authorsCard}</span>
-                <p className="book-minititle">Категории: {categoriesCard}</p>
-                {isExtended && <p className="about-book-description">Описание: {description}</p>}
+                <span className="book-minititle">Authors: {authorsCard}</span>
+                <p className="book-minititle">Categories: {categoriesCard}</p>
+                {isExtended && <p className="about-book-description">Description: {description}</p>}
             </div>
         </article>
     )

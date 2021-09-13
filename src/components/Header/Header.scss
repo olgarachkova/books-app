@@ -43,6 +43,16 @@ $header-minheight: 30px;
     margin-bottom: 5px;
 }
 
+.header-selects-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header-text {
+    color: $white1;
+    padding-left: 5px;
+}
+
 @media screen and (max-width: 600px) {
     .header-container {
         display: flex;
