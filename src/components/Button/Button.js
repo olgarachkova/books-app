@@ -2,9 +2,9 @@ import './Button.scss'
 
 import React from 'react';
 
-export function Button({ children, type = 'button', ...props }) {
+export function Button({ children, ...props }) {
 
     return (
-        <button type={type} className="button" {...props}>{children}</button>
+        <button className="button" {...props}>{children}</button>
     )
 }

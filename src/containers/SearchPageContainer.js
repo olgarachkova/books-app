@@ -8,9 +8,10 @@ import { Button } from 'components/Button';
 import { getBooksByKeyword, clear } from "actions/booksActions"
 
 export function SearchPageContainer() {
-    const searchQuery = (new URLSearchParams(useLocation().search)).get('search');
-    const orderBy = (new URLSearchParams(useLocation().search)).get('orderBy');
-    const subject = (new URLSearchParams(useLocation().search)).get('subject');
+    const searchParams = new URLSearchParams(useLocation().search);
+    const searchQuery = searchParams.get('search');
+    const orderBy = searchParams.get('orderBy');
+    const subject = searchParams.get('subject');
     const dispatch = useDispatch();
 
     const maxResults = 30;
@@ -35,26 +36,22 @@ export function SearchPageContainer() {
     }, [startIndex, searchQuery, orderBy, subject]);
 
     useEffect(() => {
-        if (startIndex + maxResults > totalItems) {
-            setIsFetchingNeeded(false)
-        } else {
-            setIsFetchingNeeded(true)
-        };
+        (startIndex + maxResults > totalItems) ? setIsFetchingNeeded(false) : setIsFetchingNeeded(true);
     }, [totalItems]);
-
-    if (error) {
-        return <Redirect to='/error' />
-    }
 
     const handleLoadMore = () => {
         setStartIndex(startIndex + maxResults);
     }
 
+    if (error) {
+        return <Redirect to='/error' />
+    }
+
     return (
         <>
+            <SearchPage results={results} totalItems={totalItems} />
             {loading && <Loader />}
-            {!loading && <SearchPage results={results} totalItems={totalItems} />}
-            {isFetchingNeeded && <Button onClick={handleLoadMore}>Load more</Button>}
+            {isFetchingNeeded && <Button type='button' onClick={handleLoadMore}>Load more</Button>}
         </>
     )
 }
