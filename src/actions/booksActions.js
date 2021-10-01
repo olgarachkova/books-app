@@ -1,7 +1,6 @@
 import axios from "axios";
 
 import { setSearchResults, setBookInfo, setLoading, setFetchError, clearSearchResults } from 'reducers/booksReducer';
-import { gkey } from 'api/gkey';
 
 export const getBooksByKeyword = (searchQuery, subject = '', startIndex = 0, maxResults = 30, orderBy = 'relevance') => {
     return async (dispatch) => {
