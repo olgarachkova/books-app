@@ -1,4 +1,4 @@
-import './searchPage.scss';
+import './SearchPage.scss';
 
 import React from 'react';
 import { Link } from 'react-router-dom';
