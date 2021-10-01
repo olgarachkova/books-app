@@ -1,6 +1,6 @@
 import { StartPage } from 'components/StartPage'
 import { BookPageContainer } from 'containers/BookPageContainer'
-import { SearchPageContainer } from 'containers/searchPageContainer'
+import { SearchPageContainer } from 'containers/SearchPageContainer'
 import { NoFoundPage } from 'components/NoFoundPage'
 import { Error } from 'components/Error'
 
